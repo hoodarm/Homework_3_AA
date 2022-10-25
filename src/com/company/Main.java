@@ -6,7 +6,11 @@ public class Main
     public static void main(String[] args)
     {
         int [] data = {-4, 11, 7, -12, 6, 1};
-        ArraySelectionSorter(data);
+        System.out.print("Round 0:");
+        for (int el:data)
+            System.out.print(" " + el);
+        System.out.println();
+        ArrayBubbleSorter(data);
     }
 
     static void ArraySelectionSorter(int[] input)
@@ -35,5 +39,31 @@ public class Main
         int temp = input[i];
         input[i] = input[j];
         input[j] = temp;
+    }
+
+    static void ArrayBubbleSorter(int [] input)
+    {
+        int counter=0;
+        while(true)
+        {
+            boolean changed = false;
+            for (int i = 1; i<input.length;i++)
+            {
+                if (input[i-1]>input[i])
+                {
+                    swap(input,i-1,i);
+                    changed = true;
+                }
+            }
+            if (!changed)
+                System.exit(0);
+            counter++;
+
+            //printing intermediate steps
+            System.out.print("Round " + counter + ": ");
+            for (int el: input)
+                System.out.print(el + " ");
+            System.out.println();
+        }
     }
 }
